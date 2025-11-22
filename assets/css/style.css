@@ -54,8 +54,11 @@ main {
     margin-bottom: 15px;
 }
 
-.intro p {
-    font-size: 1.2em;
+.slogan {
+    font-size: 1.3em;
+    font-weight: 600;
+    color: #0066cc;
+    margin-bottom: 25px;
 }
 
 /* QUI SOMMES-NOUS */
@@ -89,4 +92,3 @@ footer {
     padding: 15px 0;
     margin-top: 50px;
 }
-
