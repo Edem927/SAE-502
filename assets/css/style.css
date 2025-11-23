@@ -273,3 +273,37 @@ footer {
   }
   #submit-btn:hover { opacity: 0.95; }
   
+  /* Footer simple et centré */
+.main-footer {
+    background-color: #0a2a43;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+}
+
+.main-footer .footer-links {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 10px;
+    padding: 0;
+}
+
+.main-footer .footer-links li a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.main-footer .footer-links li a:hover {
+    color: #27a9e1;
+}
+
+/* Responsive simple */
+@media screen and (max-width: 600px) {
+    .main-footer .footer-links {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
