@@ -1,107 +1,130 @@
-// script.js
+// ===========================================
+//  SCRIPT PROFESSIONNEL - SITE CORPORATE
+//  ✨ Version optimisée, animations fluides,
+//    code propre ES6+, zéro inline CSS.
+// ===========================================
 
-document.addEventListener("DOMContentLoaded", function () {
-  // ============================
-  // 1. Menu actif selon la page
-  // ============================
+document.addEventListener("DOMContentLoaded", () => {
+
+  // =====================================================
+  // 1. Gestion dynamique du menu actif
+  // =====================================================
   const currentPage = window.location.pathname.split("/").pop();
-  const menuLinks = document.querySelectorAll("nav ul li a");
-
-  menuLinks.forEach(link => {
+  document.querySelectorAll("nav a").forEach(link => {
     if (link.getAttribute("href") === currentPage) {
       link.classList.add("active");
     }
   });
 
-  // ============================
-  // 2. Animation hover services
-  // ============================
-  const serviceCards = document.querySelectorAll(".service-card");
-  serviceCards.forEach(card => {
-    card.addEventListener("mouseenter", () => {
-      card.style.transform = "scale(1.05)";
-      card.style.transition = "all 0.3s ease";
-      card.style.boxShadow = "0 8px 20px rgba(0,0,0,0.2)";
+  // =====================================================
+  // 2. Apparitions douces des sections (IntersectionObserver)
+  // =====================================================
+  const revealElements = document.querySelectorAll(".reveal");
+
+  const revealOnScroll = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+        revealOnScroll.unobserve(entry.target);
+      }
     });
-    card.addEventListener("mouseleave", () => {
-      card.style.transform = "scale(1)";
-      card.style.boxShadow = "0 0 10px rgba(0,0,0,0.1)";
-    });
+  }, { threshold: 0.25 });
+
+  revealElements.forEach(el => revealOnScroll.observe(el));
+
+  // =====================================================
+  // 3. Animation des cartes de services
+  // =====================================================
+  document.querySelectorAll(".service-card").forEach(card => {
+    card.addEventListener("mouseenter", () => card.classList.add("hover"));
+    card.addEventListener("mouseleave", () => card.classList.remove("hover"));
   });
 
-  // ============================
-  // 3. Testimonials slideshow
-  // ============================
+  // =====================================================
+  // 4. Témoignages : slider automatique + fade
+  // =====================================================
   const testimonials = document.querySelectorAll(".testimonial-card");
-  let currentTestimonial = 0;
-
-  function showTestimonial(index) {
-    testimonials.forEach((t, i) => {
-      t.style.display = i === index ? "block" : "none";
-    });
-  }
+  let index = 0;
 
   if (testimonials.length > 0) {
-    showTestimonial(currentTestimonial);
+    testimonials.forEach(t => t.style.display = "none");
+    testimonials[0].style.display = "block";
+
     setInterval(() => {
-      currentTestimonial = (currentTestimonial + 1) % testimonials.length;
-      showTestimonial(currentTestimonial);
-    }, 5000); // change toutes les 5 secondes
+      testimonials[index].style.opacity = 0;
+
+      setTimeout(() => {
+        testimonials[index].style.display = "none";
+        index = (index + 1) % testimonials.length;
+        testimonials[index].style.display = "block";
+        testimonials[index].style.opacity = 1;
+      }, 500);
+
+    }, 5000);
   }
 
-  // ============================
-  // 4. Scroll smooth pour les liens
-  // ============================
+  // =====================================================
+  // 5. Smooth scroll modernisé
+  // =====================================================
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener("click", function (e) {
+    anchor.addEventListener("click", e => {
       e.preventDefault();
-      const target = document.querySelector(this.getAttribute("href"));
-      if (target) target.scrollIntoView({ behavior: "smooth" });
+      const target = document.querySelector(anchor.getAttribute("href"));
+      if (target) {
+        target.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
     });
   });
 
-  // ============================
-  // 5. Formulaire contact validation
-  // ============================
-  const contactForm = document.getElementById("contact-form");
-  if (contactForm) {
-    contactForm.addEventListener("submit", function (e) {
-      const name = document.getElementById("name").value.trim();
-      const email = document.getElementById("email").value.trim();
-      const message = document.getElementById("message").value.trim();
-      let errors = [];
+  // =====================================================
+  // 6. Validation formulaire (pro & UX-friendly)
+  // =====================================================
+  const form = document.getElementById("contact-form");
 
-      if (name.length < 2) errors.push("Nom trop court");
-      if (!email.includes("@") || !email.includes(".")) errors.push("Email invalide");
-      if (message.length < 10) errors.push("Message trop court");
+  if (form) {
+    form.addEventListener("submit", e => {
+      const name = form.querySelector("#name").value.trim();
+      const email = form.querySelector("#email").value.trim();
+      const message = form.querySelector("#message").value.trim();
+
+      const errors = [];
+
+      if (name.length < 2) errors.push("Votre nom est trop court.");
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))
+        errors.push("Votre email est invalide.");
+      if (message.length < 10)
+        errors.push("Votre message doit contenir au moins 10 caractères.");
 
       if (errors.length > 0) {
         e.preventDefault();
-        alert("Erreur :\n" + errors.join("\n"));
+        showToast(errors.join("<br>"));
       }
     });
   }
 
-  // ============================
-  // 6. Bouton Retour en haut
-  // ============================
+  // =====================================================
+  // 7. Notification professionnelle (toast)
+  // =====================================================
+  function showToast(message) {
+    const toast = document.createElement("div");
+    toast.className = "toast";
+    toast.innerHTML = message;
+
+    document.body.appendChild(toast);
+
+    setTimeout(() => toast.classList.add("show"), 50);
+    setTimeout(() => {
+      toast.classList.remove("show");
+      setTimeout(() => toast.remove(), 300);
+    }, 3000);
+  }
+
+  // =====================================================
+  // 8. Bouton "Retour en haut"
+  // =====================================================
   const backTop = document.createElement("button");
-  backTop.textContent = "↑";
   backTop.id = "back-to-top";
-  Object.assign(backTop.style, {
-    position: "fixed",
-    bottom: "40px",
-    right: "40px",
-    padding: "10px 15px",
-    fontSize: "20px",
-    display: "none",
-    backgroundColor: "#333",
-    color: "#fff",
-    border: "none",
-    borderRadius: "5px",
-    cursor: "pointer",
-    zIndex: "1000",
-  });
+  backTop.textContent = "↑";
   document.body.appendChild(backTop);
 
   backTop.addEventListener("click", () => {
@@ -109,10 +132,6 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   window.addEventListener("scroll", () => {
-    if (window.scrollY > 300) {
-      backTop.style.display = "block";
-    } else {
-      backTop.style.display = "none";
-    }
+    backTop.classList.toggle("visible", window.scrollY > 350);
   });
 });
