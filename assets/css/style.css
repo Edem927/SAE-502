@@ -307,3 +307,33 @@ footer {
         gap: 10px;
     }
 }
+
+/* ------------------------ */
+/*   SECTION : TEAM PHOTO   */
+/* ------------------------ */
+
+.intro-image img {
+    display: block;       /* s'assure que l'image s'affiche */
+    margin: 20px auto;    /* centre l'image */
+    width: 100%;          /* responsive */
+    max-width: 750px;     /* largeur maximale */
+    height: auto;         /* garde les proportions */
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    transition: transform 0.3s ease;
+}
+
+.intro-image img:hover {
+    transform: scale(1.02);
+}
+
+.intro-image img {
+    display: block !important;
+    margin: 20px auto !important;
+    width: 100% !important;
+    max-width: 750px !important;
+    height: auto !important;
+    border-radius: 16px !important;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15) !important;
+    transition: transform 0.3s ease !important;
+}
