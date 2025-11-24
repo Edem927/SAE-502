@@ -337,3 +337,52 @@ footer {
     box-shadow: 0 8px 20px rgba(0,0,0,0.15) !important;
     transition: transform 0.3s ease !important;
 }
+
+/* -------- TESTIMONIALS -------- */
+
+.testimonials-section {
+    width: 90%;
+    max-width: 900px;
+    margin: 40px auto;
+    text-align: center;
+}
+
+.testimonial-card {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: white;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    transition: 0.3s ease;
+}
+
+.testimonial-card:hover {
+    transform: scale(1.02);
+}
+
+.avatar {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.testimonial-content {
+    text-align: left;
+}
+
+.stars {
+    color: gold;
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+.author {
+    display: block;
+    margin-top: 5px;
+    font-size: 14px;
+    color: #777;
+}
