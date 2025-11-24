@@ -3,16 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nos Services - Mon Entreprise</title>
+  <title>Nos Services - Projet BUT R&T</title>
   <link rel="stylesheet" href="assets/css/services.css">
-  
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
   <header>
     <nav>
       <ul>
         <li><a href="index.html">Accueil</a></li>
-        <li><a href="services.html">Services</a></li>
+        <li><a href="services.html" class="active">Services</a></li>
         <li><a href="testimonials.html">Témoignages</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
@@ -22,36 +22,60 @@
   <main>
     <section class="services">
       <h2>Nos Services</h2>
-      
-      <div class="service-card">
-        <h3>Développement Web</h3>
-        <p>
-          Création de sites modernes, rapides et responsive.  
-          Nous réalisons des sites vitrines, e-commerce ou applications web sur mesure adaptés à vos besoins.
-        </p>
+
+      <div class="services-grid">
+        <div class="service-card">
+          <img src="assets/img/web-dev.png" alt="Développement Web">
+          <h3>Développement Web</h3>
+          <p>
+            Création de sites modernes, rapides et responsive. 
+            Sites vitrines, e-commerce ou applications web sur mesure.
+          </p>
+          <a href="contact.html" class="btn-service">En savoir plus</a>
+        </div>
+
+        <div class="service-card">
+          <img src="assets/img/support.png" alt="Support Informatique">
+          <h3>Maintenance & Support</h3>
+          <p>
+            Assistance technique, dépannage, installation de matériel, gestion du réseau et surveillance.
+          </p>
+          <a href="contact.html" class="btn-service">En savoir plus</a>
+        </div>
+
+        <div class="service-card">
+          <img src="assets/img/cybersecurity.png" alt="Cybersécurité">
+          <h3>Cybersécurité & Protection</h3>
+          <p>
+            Audit de sécurité, mise en place de solutions, sensibilisation aux risques et analyse des vulnérabilités.
+          </p>
+          <a href="contact.html" class="btn-service">En savoir plus</a>
+        </div>
       </div>
 
-      <div class="service-card">
-        <h3>Maintenance & Support Informatique</h3>
-        <p>
-          Assistance technique, dépannage, installation de matériel, gestion du réseau et surveillance de votre parc informatique.
-        </p>
-      </div>
-
-      <div class="service-card">
-        <h3>Cybersécurité & Protection des Données</h3>
-        <p>
-          Audit de sécurité, mise en place de solutions de protection, sensibilisation aux risques et analyse des vulnérabilités.
-        </p>
-      </div>
+      <section class="why-choose">
+        <h2>Pourquoi nous choisir ?</h2>
+        <div class="features-grid">
+          <div class="feature-card">
+            <img src="assets/img/expertise.png" alt="Expertise">
+            <h4>Expertise professionnelle</h4>
+          </div>
+          <div class="feature-card">
+            <img src="assets/img/speed.png" alt="Rapidité">
+            <h4>Rapidité & Efficacité</h4>
+          </div>
+          <div class="feature-card">
+            <img src="assets/img/support-24.png" alt="Support 24/7">
+            <h4>Support 24/7</h4>
+          </div>
+        </div>
+      </section>
 
     </section>
   </main>
 
   <footer>
-    <p>&copy; 2025 Mon Entreprise</p>
+    <p>&copy; 2025 Projet BUT R&T</p>
   </footer>
-  <script src="assets/js/script.js"></script>
 </body>
 </html>
-git
