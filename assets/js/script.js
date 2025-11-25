@@ -135,3 +135,9 @@ document.addEventListener("DOMContentLoaded", () => {
     backTop.classList.toggle("visible", window.scrollY > 350);
   });
 });
+
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    document.body.classList.add('loaded');
+  }, 500); // Attendre 500 ms avant d'ajouter la classe 'loaded'
+});
